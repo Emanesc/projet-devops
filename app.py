@@ -205,10 +205,7 @@ def delete_intervention(id):
 
 
 
-@app.route('/dashboard')
-def dashboard():
-    data = get_percentage_tasks()
-    return render_template('dashboard.html', data=data)
+
 
 
 @app.route('/logout')
