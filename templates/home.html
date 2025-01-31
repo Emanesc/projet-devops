@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-GLhlTQ8iKu1i0lHgSTLWI7f5qdjZO0nvNkVMTA56E2IbbqVnBohFj5dQTb4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylehome.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-jB1eq8tNLZDRZZN2zb25KiCCsDII5GvDBHtoYFwHLK7jB2h2srdpZwqd61LaUpjN5NVdZ1Nm8+30EEEnLUZM2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+<div class="welcome-section">
+    <a class ="logout-link"  href="{{url_for('logout')}}"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+   <h1>Page d'accueil</h1>
+    <h3>Découvrez la liste des intervenants, des clients et des interventions.</h3>
+</div>
+    <h2>Liste des intervenants</h2>
+                <br>
+    <a class="add-boutton" href="{{ url_for('add_intervenant') }}">Ajouter un intervenant</a>
+    <table class ="t1">
+        
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Poste</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for intervenant in intervenants %}
+                <tr>
+                    <td>{{ intervenant.IdIntervenant}}</td>
+                    <td>{{ intervenant.Nom }}</td>
+                    <td>{{ intervenant.Prenom }}</td>
+                    <td>{{ intervenant.Poste }}</td>
+                    <td>
+                        <a class = "mod" href="{{ url_for('edit_intervenantform', id=intervenant.IdIntervenant) }}">Modifier</a>
+                        <a class = "del" href="{{ url_for('delete_intervenant', id=intervenant.IdIntervenant) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <br><br>
+
+    <h2>Liste des clients</h2>
+    <br>
+    <a class="add-boutton" href="{{ url_for('add_client') }}">Ajouter un client</a>
+    <table>
+        
+        
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Direction</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.IdClient}}</td>
+                    <td>{{ client.Nom }}</td>
+                    <td>{{ client.Prenom }}</td>
+                    <td>{{ client.direction }}</td>
+                    <td>
+                        <a class = "mod" href="{{ url_for('edit_clientform', id=client.IdClient) }}">Modifier</a>
+                        <a class = "del" href="{{ url_for('delete_client', id=client.IdClient) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        
+<br><br>
+
+     <h2>Liste des interventions</h2>
+                    <br>
+     <a class="add-boutton" href="{{ url_for('add_intervention') }}">Ajouter une intervention</a>
+    <table>
+        
+        
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Motif</th>
+                <th>État</th>
+                <th>ID Intervenant</th>
+                <th>ID Client</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for intervention in interventions %}
+                <tr>
+                    <td>{{ intervention.Id }}</td>
+                    <td>{{ intervention.date }}</td>
+                    <td>{{ intervention.type }}</td>
+                    <td>{{ intervention.Motive }}</td>
+                    <td>{{ intervention.etat }}</td>
+                    <td>{{ intervention.IdIntervenant }}</td>
+                    <td>{{ intervention.IdClient }}</td>
+                    <td>
+                        <a class = "mod" href="{{ url_for('edit_interventionform', id=intervention.Id) }}">Modifier</a>
+                        <a class = "del" href="{{ url_for('delete_intervention', id=intervention.Id) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

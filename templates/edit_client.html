@@ -1,0 +1,27 @@
+<!-- edit_client.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier un client</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add.css') }}">
+</head>
+<body>
+    <h2>Modifier un client</h2>
+    <form action="{{ url_for('edit_client', id=client.IdClient) }}" method="post">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" value="{{ client.Nom }}" required>
+
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom" value="{{ client.Prenom }}" required>
+
+        <label for="direction">Direction:</label>
+        <input type="text" id="direction" name="direction" value="{{ client.direction }}" required>
+
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+    <br>
+    <a href="{{ url_for('homepage') }}">Retour à la liste des clients</a>
+</body>
+</html>

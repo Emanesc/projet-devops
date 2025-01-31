@@ -1,0 +1,27 @@
+<!-- add_client.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un client</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add.css') }}">
+</head>
+<body>
+    <h2>Ajouter un client</h2>
+    <form action="{{ url_for('add_client') }}" method="post">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom" required>
+
+        <label for="direction">Direction:</label>
+        <input type="text" id="direction" name="direction" required>
+
+        <button type="submit">Ajouter le client</button>
+    </form>
+    <br>
+    <a href="{{ url_for('homepage') }}">Retour à la liste des clients</a>
+</body>
+</html>

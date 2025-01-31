@@ -1,0 +1,42 @@
+<!-- add_intervention.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une intervention</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add.css') }}">
+</head>
+<body>
+    <h2>Ajouter une intervention</h2>
+    <form action="{{ url_for('add_intervention') }}" method="post">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="type">Type:</label>
+        <select id="type" name="type" required>
+            <option value="Soft">Soft</option>
+            <option value="Hard">Hard</option>
+        </select>
+
+        <label for="motive">Motif:</label>
+        <input type="text" id="motive" name="motive" required>
+
+        <label for="etat">État:</label>
+        <select id="etat" name="etat" required>
+            <option value="en attente">En attente</option>
+            <option value="réalisée">Réalisée</option>
+        </select>
+
+        <label for="id_intervenant">Intervenant:</label>
+        <input type="text" id="id_intervenant" name="id_intervenant" required>
+
+        <label for="id_client">Client:</label>
+        <input type="text" id="id_client" name="id_client" required>
+
+        <button type="submit">Ajouter l'intervention</button>
+    </form>
+    <br>
+    <a href="{{ url_for('homepage') }}">Retour à la liste des interventions</a>
+</body>
+</html>

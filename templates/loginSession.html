@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-3TjsaPwcaHkE6r9iC97e1d5jTN8XcXlkQXAeHck/J4/LO/Gb/0U4AVaSEJXeGpiHmX6Ck+eI6QlH/y7/GrSAyQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css') }}">
+    <title>Connexion</title>
+    <style>
+        .login-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-container i {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+        }
+
+        input {
+            padding-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+
+            <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" name="username"  placeholder="User Name">
+            </div>
+
+            <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" name="password"  placeholder="Password">
+            </div>
+
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+</body>
+</html>

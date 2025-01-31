@@ -1,0 +1,25 @@
+<!-- edit_intervenant.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier un intervenant</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='add.css') }}">
+</head>
+<body>
+    <h2>Modifier un intervenant</h2>
+    <form action="{{ url_for('edit_intervenant', id=intervenant.IdIntervenant) }}" method="post">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" value="{{ intervenant.Nom }}" required>
+
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom" value="{{ intervenant.Prenom }}" required>
+
+        <label for="poste">Poste:</label>
+        <input type="text" id="poste" name="poste" value="{{ intervenant.Poste }}" required>
+
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+</body>
+</html>
