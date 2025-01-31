@@ -43,7 +43,6 @@ with app.app_context():
     db.create_all()
 
 
-
 @app.route('/')
 def homelogin():
     return render_template("loginSession.html")
@@ -203,33 +202,9 @@ def delete_intervention(id):
     db.session.commit()
     return redirect(url_for('homepage'))
 
-# Exemple de code pour récupérer les pourcentages des tâches
-def get_percentage_tasks():
-    total_tasks = Intervention.query.count()
 
-    # Pourcentage des tâches réalisées par chaque intervenant
-    intervenant_percentages = []
-    intervenants = Intervenant.query.all()
-    for intervenant in intervenants:
-        tasks_by_intervenant = Intervention.query.filter_by(IdIntervenant=intervenant.IdIntervenant).count()
-        percentage = (tasks_by_intervenant / total_tasks) * 100
-        intervenant_percentages.append({
-            'intervenant': f"{intervenant.Nom} {intervenant.Prenom}",
-            'percentage': round(percentage, 2)
-        })
 
-    # Pourcentage des tâches réalisées ou en attente globalement
-    tasks_done = Intervention.query.filter_by(etat='réalisée').count()
-    tasks_waiting = Intervention.query.filter_by(etat='en attente').count()
-    percentage_done = (tasks_done / total_tasks) * 100
-    percentage_waiting = (tasks_waiting / total_tasks) * 100
-
-    return {
-        'intervenant_percentages': intervenant_percentages,
-        'percentage_done': round(percentage_done, 2),
-        'percentage_waiting': round(percentage_waiting, 2)
-    }
-
+   
 @app.route('/dashboard')
 def dashboard():
     data = get_percentage_tasks()
